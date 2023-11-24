@@ -2,10 +2,8 @@ import { API_URL } from '../utils/contants'
 
 export const getAllDescriptionTramit = async () => {
   try {
-    const users = await fetch(`${API_URL}/descriptionTramit`, {
-      method: 'GET'
-    })
-    const data = await users.json()
+    const allDescriptions = await fetch(`${API_URL}/descriptionTramit`)
+    const data = await allDescriptions.json()
     return data
   } catch (error) {
     return { status: error.message }
@@ -14,10 +12,10 @@ export const getAllDescriptionTramit = async () => {
 
 export const getDescriptionTramitById = async (id) => {
   try {
-    const user = await fetch(`${API_URL}/descriptionTramit/${id}`, {
+    const descriptionTramit = await fetch(`${API_URL}/descriptionTramit/${id}`, {
       method: 'GET'
     })
-    const data = await user.json()
+    const data = await descriptionTramit.json()
     return data
   } catch (error) {
     return { status: error.message }
@@ -26,12 +24,12 @@ export const getDescriptionTramitById = async (id) => {
 
 export const createDescriptionTramit = async ({ title, description, requirement, precio }) => {
   try {
-    const user = await fetch(`${API_URL}/descriptionTramit`, {
+    const createDescriptionTramit = await fetch(`${API_URL}/descriptionTramit`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ title, description, requirement, precio })
     })
-    await user.json()
+    await createDescriptionTramit.json()
   } catch (error) {
     return { status: error.message }
   }

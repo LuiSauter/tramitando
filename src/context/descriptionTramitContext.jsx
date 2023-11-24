@@ -14,13 +14,13 @@ export function DescriptionTramitProvider({ children }) {
 
   const allDescriptionTramits = async () => {
     const res = await getAllDescriptionTramit()
-    setDescriptionTramit(res.data)
+    res && setDescriptionTramit(res)
   }
 
   const addDescriptionTramit = async ({ title, description, requirement, precio }) => {
     try {
       const res = await createDescriptionTramit({ title, description, requirement, precio })
-      console.log(res.data)
+      console.log(res)
     } catch (error) {
       console.log(error)
     }
@@ -29,7 +29,7 @@ export function DescriptionTramitProvider({ children }) {
   const getDescriptionTramit = async (id) => {
     try {
       const res = await getDescriptionTramitById(id)
-      return res.data
+      return res
     } catch (error) {
       console.error(error)
     }
